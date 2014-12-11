@@ -1,0 +1,53 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  #- name: ubuntu-12.04
+  #- name: ubuntu-14.04
+  #- name: centos-6.4
+  - name: centos-6.5
+
+suites:
+  - name: default
+    run_list:
+      - recipe[selinux::permissive]
+      # # - recipe[timezone-ii]
+      # # - recipe[apt]
+      - recipe[build-essential]
+      - recipe[yum]     
+      - recipe[postgresql::server]
+      - recipe[postgresql::client]
+      - recipe[galaxy]
+      - recipe[apache2]
+      - recipe[apache2::mod_proxy]
+      - recipe[apache2::mod_proxy_http]
+      - recipe[galaxy-httpproxy-cookbook]
+    attributes:
+      tz: "Asia/Tokyo"
+      postgresql:
+        password: 
+           postgres: "ilovethispassword"
+      build-essential:
+        compile_time: true 
+      galaxy:
+        user: "galaxy"
+        group: "galaxy"
+        home: "/usr/local/galaxy"
+        admin_users: "example@example.com"
+        master_api_key: "changeit"
+        reference: "latest_2014.08.11"
+
+        tool_dependency_dir: "./tool_dependency_directory"
+        db:
+          type: "postgresql"
+          hostname: "127.0.0.1"
+          databaseusername: "galaxy"
+          databasepassword: "galaxy"
+          admin:
+            username: "postgres"
+            password: "ilovethispassword"
+
