@@ -8,6 +8,5 @@ cookbook 'apache2'
 cookbook 'postgresql'
 #cookbook 'build-essential'
 cookbook 'galaxy', github: "BioDevOps/galaxy-cookbook"
-#cookbook 'cooking-galaxy', github: "manabuishii/cooking-galaxy"
 cookbook 'galaxy-httpproxy-cookbook', github: "manabuishii/galaxy-httpproxy-cookbook"
 metadata
