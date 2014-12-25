@@ -1,7 +1,7 @@
 require 'spec_helper'
 #set :path, '/usr/bin:/sbin:/usr/local/sbin:$PATH'
 
-describe "zabbix web" do
+describe "galaxy web" do
   getcommand = "curl http://localhost"
   if ['debian', 'ubuntu'].include?(os[:family])
     getcommand = "wget http://localhost -O -"
