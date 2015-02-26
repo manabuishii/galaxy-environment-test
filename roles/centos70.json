@@ -1,0 +1,11 @@
+{
+    "name": "centos70",
+    "json_class": "Chef::Role",
+    "description": "centos70 role",
+    "default_attributes": {
+    },
+    "run_list": [
+        "recipe[yum]"
+    ],
+    "chef_type": "role"
+}

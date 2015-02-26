@@ -1,0 +1,12 @@
+{
+    "name": "ubuntu1404",
+    "json_class": "Chef::Role",
+    "description": "ubuntu1404 role",
+    "default_attributes": {
+    },
+    "run_list": [
+        "recipe[ubuntu-change-source-list]",
+        "recipe[apt]"
+    ],
+    "chef_type": "role"
+}
