@@ -45,7 +45,7 @@ platforms:
       - recipe[apache2::mod_access_compat]
 
 suites:
-  - name: default
+  - name: galaxy-environment-test
     run_list:
       - recipe[selinux::permissive]
       # # - recipe[timezone-ii]
