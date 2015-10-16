@@ -7,6 +7,6 @@ cookbook 'selinux'
 cookbook 'apache2'
 cookbook 'postgresql'
 #cookbook 'build-essential'
-cookbook 'galaxy', github: "BioDevOps/galaxy-cookbook"
-cookbook 'galaxy-httpproxy', github: "manabuishii/galaxy-httpproxy-cookbook"
+cookbook 'galaxy', github: "BioDevOps/galaxy-cookbook", tag: "1.0.0"
+cookbook 'galaxy-httpproxy', github: "manabuishii/galaxy-httpproxy-cookbook" , tag: "0.3.1"
 metadata

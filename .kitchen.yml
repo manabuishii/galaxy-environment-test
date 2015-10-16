@@ -12,11 +12,15 @@ platforms:
   - name: ubuntu-14.04
     driver:
       vagrantfile_erb: Vagrantfile.erb
+      synced_folders:
+        - ['./result', '/tmp/result']
     run_list:
       - role[ubuntu1404]
       - recipe[apache2::mod_authz_host]
       - recipe[apache2::mod_access_compat]
     attributes:
+      #galaxy_http_proxy:
+      #  galaxy_conf: "apache.2.4.galaxy.conf.erb"
       apt:
         compile_time_update: true
       build-essential:
@@ -31,6 +35,8 @@ platforms:
   - name: centos-6.5
     driver:
       vagrantfile_erb: Vagrantfile.erb
+      synced_folders:
+        - ['./result', '/tmp/result']
     run_list:
       - role[centos65]
     attributes:
@@ -51,14 +57,15 @@ suites:
       # # - recipe[timezone-ii]
       # # - recipe[apt]
       - recipe[build-essential]
-      #- recipe[yum]     
+      #- recipe[yum]
       - recipe[postgresql::server]
       - recipe[postgresql::client]
-      - recipe[galaxy@0.6.7]
+      - recipe[galaxy]
       - recipe[apache2]
+      - recipe[apache2::mod_rewrite]
       - recipe[apache2::mod_proxy]
       - recipe[apache2::mod_proxy_http]
-      - recipe[galaxy-httpproxy@0.3.1]
+      - recipe[galaxy-httpproxy]
       #- recipe[galaxy-environment-test]
     attributes:
       python:
@@ -74,19 +81,23 @@ suites:
         #prefix_dir: "/usr/local/python2.7.9"
       tz: "Asia/Tokyo"
       postgresql:
-        password: 
+        password:
            postgres: "ilovethispassword"
       build-essential:
-        compile_time: true 
+        compile_time: true
+      #galaxy_http_proxy:
+      #  galaxy_conf: "apache.2.4.galaxy.conf.erb"
       galaxy:
+        config: "config/galaxy.ini"
         user: "galaxy"
         group: "galaxy"
         home: "/usr/local/galaxy"
         #admin_users: "example@example.com"
         #master_api_key: "changeit"
-        reference: "latest_2014.08.11"
-        overwrite_run_sh: true
-        overwrite_fetch_eggs_py: true
+        reference: "latest_15.03"
+        #reference: "latest_2014.08.11"
+        #overwrite_run_sh: true
+        #overwrite_fetch_eggs_py: true
 
         tool_dependency_dir: "./tool_dependency_directory"
         db:
@@ -97,4 +108,3 @@ suites:
           admin:
             username: "postgres"
             password: "ilovethispassword"
-

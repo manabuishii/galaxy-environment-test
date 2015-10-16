@@ -1,4 +1,4 @@
-require 'serverspec'
+require 'spec_helper'
 set :backend, :exec
 
 describe "apache Daemon" do
