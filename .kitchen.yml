@@ -45,6 +45,8 @@ platforms:
   - name: centos-7.0
     driver:
       vagrantfile_erb: Vagrantfile.erb
+      synced_folders:
+        - ['./result', '/tmp/result']
     run_list:
       - role[centos70]
       - recipe[apache2::mod_authz_host]
