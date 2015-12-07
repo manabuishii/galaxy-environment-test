@@ -1,4 +1,4 @@
 name "galaxy-environment-test"
-version "1.1.1"
+version "1.2.0"
 
 depends "galaxy"
