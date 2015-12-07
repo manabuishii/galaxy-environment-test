@@ -96,7 +96,7 @@ suites:
         home: "/usr/local/galaxy"
         #admin_users: "example@example.com"
         #master_api_key: "changeit"
-        reference: "latest_15.03"
+        reference: "latest_15.07"
         #reference: "latest_2014.08.11"
         #overwrite_run_sh: true
         #overwrite_fetch_eggs_py: true
