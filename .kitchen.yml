@@ -42,8 +42,9 @@ platforms:
     attributes:
       galaxy_http_proxy:
         galaxy_conf: "galaxy.conf.erb"
-  - name: centos-7.0
+  - name: centos-7
     driver:
+      box: bento/centos-7.2
       vagrantfile_erb: Vagrantfile.erb
       synced_folders:
         - ['./result', '/tmp/result']
